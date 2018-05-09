@@ -16,6 +16,7 @@ namespace TesterApp
             Console.WriteLine("2. Resta Unaria");
             Console.WriteLine("3. Multiplicacion Unaria");
             Console.WriteLine("4. Palindromo");
+            Console.WriteLine("5. Copia de patron");
             int choice = int.Parse(Console.ReadLine());
             Console.WriteLine("Ingrese la cadena");
             if (choice == 1)
@@ -89,6 +90,26 @@ namespace TesterApp
                     for (int i = 0; i < mult.history.Count; i++)
                         Console.Write(mult.history[i] + " ");
                     if(mult.returnState())
+                        Console.WriteLine("Aceptado");
+                }
+            }
+            if (choice == 5)
+            {
+                string input = Console.ReadLine();
+                TuringMachineCopy mult = new TuringMachineCopy();
+                if (mult.evaluateInput(input.ToCharArray()))
+                {
+                    // write the tape 
+                    for (int i = 0; i < mult.tape.Count; i++)
+                        Console.Write(mult.tape[i] + " ");
+                    Console.WriteLine();
+                    // write the movements 
+                    for (int i = 0; i < mult.headMovements.Count; i++)
+                        Console.Write(mult.headMovements[i] + " ");
+                    Console.WriteLine();
+                    for (int i = 0; i < mult.history.Count; i++)
+                        Console.Write(mult.history[i] + " ");
+                    if (mult.returnState())
                         Console.WriteLine("Aceptado");
                 }
             }
