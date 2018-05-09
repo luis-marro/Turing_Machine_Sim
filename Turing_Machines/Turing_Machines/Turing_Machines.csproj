@@ -44,6 +44,7 @@
     <Compile Include="Transition.cs" />
     <Compile Include="TuringMachine.cs" />
     <Compile Include="TuringMachineMult.cs" />
+    <Compile Include="TuringMachinePalin.cs" />
     <Compile Include="TuringMachineSub.cs" />
     <Compile Include="TuringMachineSum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

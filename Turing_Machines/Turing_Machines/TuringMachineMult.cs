@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Turing_Machines
 {
+    /// <summary>
+    /// Turing machine that writes the result of unary multiplication between two numbers 
+    /// </summary>
     public class TuringMachineMult : TuringMachine
     {
         /// <summary>

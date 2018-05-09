@@ -76,5 +76,14 @@ namespace Turing_Machines
                     return false;
             }
         }
+
+        /// <summary>
+        /// Public method to get hte validity of an string 
+        /// </summary>
+        /// <returns></returns>
+        public bool returnState()
+        {
+            return actual.isAcceptance; 
+        }
     }
 }
