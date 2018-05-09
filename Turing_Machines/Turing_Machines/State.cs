@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Turing_Machines
 {
-    internal class State
+    public class State
     {
         public int name;
         public bool isAcceptance;

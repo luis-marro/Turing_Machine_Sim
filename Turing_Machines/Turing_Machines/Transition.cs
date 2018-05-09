@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Turing_Machines
 {
-    internal class Transition
+    public class Transition
     {
         public int nextState;
         public char replacement;

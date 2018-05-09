@@ -10,29 +10,14 @@ namespace Turing_Machines
     /// <summary>
     /// Turing machine that writes the sum of two unary represented numbers 
     /// </summary>
-    public class TuringMachineSum
+    public class TuringMachineSum : TuringMachine
     {
-        // Array to store all the transitions 
-        private State[] allStates; 
-        // List to store all the movements 
-        public List<char> headMovements; 
-        // List to represent the tape 
-        public List<char> tape;
-        // List to store the state history
-        public List<string> history; 
-        // The machine's current state 
-        private State actual; 
 
         /// <summary>
         /// Constructor for turing machine to perform unary sum. Check diagram for states information. 
         /// </summary>
-        public TuringMachineSum()
+        public TuringMachineSum() : base(6)
         {
-            tape = new List<char>();
-            headMovements = new List<char>(); 
-            allStates = new State[6];
-            history = new List<string>(); 
-            // fill the states with their transitions 
             Transition state0 = new Transition(1, 'x', 'R', '1');  
             State q0 = new State(0, false, state0);
             allStates[0] = q0; 
@@ -73,53 +58,53 @@ namespace Turing_Machines
             actual = q0; 
         }
 
-        /// <summary>
-        /// Public method that evaluates the input to get sum result 
-        /// </summary>
-        /// <param name="symbols"></param>
-        /// <returns></returns>
-        public bool evaluateInput(char[] symbols)
-        {
-            // initialize the position and the tape 
-            int position = 0; 
-            tape.AddRange(symbols); 
-            history.Add("q0");
-            // infinite loop until the input is processed
-            while (true)
-            {
-                // see if the actual state contains a transition with the current symbol. 
-                if (allStates[actual.name].checkTransition(tape[position]))
-                {
-                    Transition temp; 
-                    if (allStates[actual.name].allTransitions != null)
-                        temp = allStates[actual.name].allTransitions[tape[position]];
-                    else if (allStates[actual.name].transition != null)
-                        temp = allStates[actual.name].transition; 
-                    else 
-                        temp = new Transition(5, '1', 'L', '1'); // unreachable case to avoid compilation errors
-                    actual = allStates[temp.nextState];
-                    history.Add("q" + actual.name.ToString());  
-                    if (actual.isAcceptance)
-                        return true;
-                    tape[position] = temp.replacement;
-                    if (temp.movement == 'R')
-                    {
-                        position++;
-                        headMovements.Add('R');
-                    }
-                    if (temp.movement == 'L')
-                    {
-                        position--;
-                        headMovements.Add('L'); 
-                    }
-                    // Check if a position should be added to tape for semi infinity chacarteristic
-                    if (tape.Count == position)
-                        tape.Add('B');
-                }
-                // The current state doesn't have a transition for the symbol, reject the input and exit 
-                else
-                    return false; 
-            }
-        }
+        ///// <summary>
+        ///// Public method that evaluates the input to get sum result 
+        ///// </summary>
+        ///// <param name="symbols"></param>
+        ///// <returns></returns>
+        //public bool evaluateInput(char[] symbols)
+        //{
+        //    // initialize the position and the tape 
+        //    int position = 0; 
+        //    tape.AddRange(symbols); 
+        //    history.Add("q0");
+        //    // infinite loop until the input is processed
+        //    while (true)
+        //    {
+        //        // see if the actual state contains a transition with the current symbol. 
+        //        if (allStates[actual.name].checkTransition(tape[position]))
+        //        {
+        //            Transition temp; 
+        //            if (allStates[actual.name].allTransitions != null)
+        //                temp = allStates[actual.name].allTransitions[tape[position]];
+        //            else if (allStates[actual.name].transition != null)
+        //                temp = allStates[actual.name].transition; 
+        //            else 
+        //                temp = new Transition(5, '1', 'L', '1'); // unreachable case to avoid compilation errors
+        //            actual = allStates[temp.nextState];
+        //            history.Add("q" + actual.name.ToString());  
+        //            if (actual.isAcceptance)
+        //                return true;
+        //            tape[position] = temp.replacement;
+        //            if (temp.movement == 'R')
+        //            {
+        //                position++;
+        //                headMovements.Add('R');
+        //            }
+        //            if (temp.movement == 'L')
+        //            {
+        //                position--;
+        //                headMovements.Add('L'); 
+        //            }
+        //            // Check if a position should be added to tape for semi infinity chacarteristic
+        //            if (tape.Count == position)
+        //                tape.Add('B');
+        //        }
+        //        // The current state doesn't have a transition for the symbol, reject the input and exit 
+        //        else
+        //            return false; 
+        //    }
+        //}
     }
 }
