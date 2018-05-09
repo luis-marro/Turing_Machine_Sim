@@ -13,6 +13,7 @@ namespace TesterApp
         {
             Console.WriteLine("Selecciones la maquina a utilizar");
             Console.WriteLine("1. Suma Unaria");
+            Console.WriteLine("2. Resta Unaria");
             int choice = int.Parse(Console.ReadLine());
             Console.WriteLine("Ingrese la cadena");
             if (choice == 1)
@@ -28,6 +29,27 @@ namespace TesterApp
                     // write the movements 
                     for(int i = 0; i < sum.headMovements.Count; i++)
                         Console.Write(sum.headMovements[i] + " ");
+                    Console.WriteLine(); 
+                    for (int i = 0; i < sum.history.Count; i++)
+                        Console.Write(sum.history[i] + " ");
+                }
+            }
+            if (choice == 2)
+            {
+                string input = Console.ReadLine(); 
+                TuringMachineSub sub = new TuringMachineSub();
+                if (sub.evaluateInput(input.ToCharArray()))
+                {
+                    // write the tape 
+                    for (int i = 0; i < sub.tape.Count; i++)
+                        Console.Write(sub.tape[i] + " ");
+                    Console.WriteLine();
+                    // write the movements 
+                    for (int i = 0; i < sub.headMovements.Count; i++)
+                        Console.Write(sub.headMovements[i] + " ");
+                    Console.WriteLine();
+                    for (int i = 0; i < sub.history.Count; i++)
+                        Console.Write(sub.history[i] + " ");
                 }
             }
 

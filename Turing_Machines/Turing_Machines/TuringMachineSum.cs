@@ -18,6 +18,8 @@ namespace Turing_Machines
         public List<char> headMovements; 
         // List to represent the tape 
         public List<char> tape;
+        // List to store the state history
+        public List<string> history; 
         // The machine's current state 
         private State actual; 
 
@@ -29,6 +31,7 @@ namespace Turing_Machines
             tape = new List<char>();
             headMovements = new List<char>(); 
             allStates = new State[6];
+            history = new List<string>(); 
             // fill the states with their transitions 
             Transition state0 = new Transition(1, 'x', 'R', '1');  
             State q0 = new State(0, false, state0);
@@ -80,6 +83,7 @@ namespace Turing_Machines
             // initialize the position and the tape 
             int position = 0; 
             tape.AddRange(symbols); 
+            history.Add("q0");
             // infinite loop until the input is processed
             while (true)
             {
@@ -94,6 +98,7 @@ namespace Turing_Machines
                     else 
                         temp = new Transition(5, '1', 'L', '1'); // unreachable case to avoid compilation errors
                     actual = allStates[temp.nextState];
+                    history.Add("q" + actual.name.ToString());  
                     if (actual.isAcceptance)
                         return true;
                     tape[position] = temp.replacement;
