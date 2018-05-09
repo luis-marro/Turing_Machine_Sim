@@ -29,7 +29,7 @@ namespace Turing_Machines
         }
 
         /// <summary>
-        /// Public method that evaluates the input to get sum result 
+        /// Public general method that evaluates the input to get any turing machine result 
         /// </summary>
         /// <param name="symbols"></param>
         /// <returns></returns>

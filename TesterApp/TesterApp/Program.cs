@@ -14,6 +14,7 @@ namespace TesterApp
             Console.WriteLine("Selecciones la maquina a utilizar");
             Console.WriteLine("1. Suma Unaria");
             Console.WriteLine("2. Resta Unaria");
+            Console.WriteLine("3. Multiplicacion Unaria");
             int choice = int.Parse(Console.ReadLine());
             Console.WriteLine("Ingrese la cadena");
             if (choice == 1)
@@ -50,6 +51,24 @@ namespace TesterApp
                     Console.WriteLine();
                     for (int i = 0; i < sub.history.Count; i++)
                         Console.Write(sub.history[i] + " ");
+                }
+            }
+            if (choice == 3)
+            {
+                string input = Console.ReadLine();
+                TuringMachineMult mult = new TuringMachineMult();
+                if (mult.evaluateInput(input.ToCharArray()))
+                {
+                    // write the tape 
+                    for (int i = 0; i < mult.tape.Count; i++)
+                        Console.Write(mult.tape[i] + " ");
+                    Console.WriteLine();
+                    // write the movements 
+                    for (int i = 0; i < mult.headMovements.Count; i++)
+                        Console.Write(mult.headMovements[i] + " ");
+                    Console.WriteLine();
+                    for (int i = 0; i < mult.history.Count; i++)
+                        Console.Write(mult.history[i] + " ");
                 }
             }
 
